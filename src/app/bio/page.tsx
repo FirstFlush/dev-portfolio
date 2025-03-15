@@ -9,7 +9,7 @@ import {
   LinkedInIcon,
   StreetNinjaIcon,
 } from '@/components/icons/social-icons'
-import portraitImage from '@/images/portrait.jpg'
+import portraitImage from '@/images/photos/mountain_squat.webp'
 
 function SocialLink({
   className,

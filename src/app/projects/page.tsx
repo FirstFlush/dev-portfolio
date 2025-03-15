@@ -23,13 +23,13 @@ export default function Projects() {
         {projects.map((project) => (
           <Card as="li" key={project.name}>
             <div className='z-10 flex gap-x-3 items-center'>
-              {project.logos.map((Logo) => (
-                <Logo size={50} />
+              {project.logos.map((Logo, i) => (
+                <Logo size={50} key={i} />
               ))}
               
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link href={project.link.href}>{project.name}</Card.Link>
+              <Card.Link target="_blank" rel="noopener noreferrer" href={project.link.href}>{project.name}</Card.Link>
             </h2>
             <Card.Description>{project.description}</Card.Description>
             <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">

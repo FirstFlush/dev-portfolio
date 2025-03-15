@@ -71,9 +71,19 @@ export default function About() {
             I'm Michael Pearce, a full-stack developer in Vancouver, building software that solves real problems.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat repudiandae quibusdam veniam omnis ab consequuntur corrupti officia animi quaerat ullam cum commodi minima esse quidem quod iusto, iste id consectetur.
-            </p>
+          <p>
+            I'm a self-taught full-stack developer with a passion for building software that solves real-world problems. My main stack is Python and TypeScript, but I’ve also been diving into C# lately. Before tech, I worked in construction, so I know what it’s like to build things from the ground up—whether it’s with concrete or code.
+          </p>
+          <p>
+            I’m the founder of Street Ninja, a non-profit project designed to help vulnerable people find essential resources in real-time. Beyond that, I have a strong hobbyist interest in cybersecurity (I enjoy CTFs on TryHackMe and VulnHub) and messing around with microcontrollers—though I try not to burn my house down in the process.
+          </p>
+          <p>
+            When I’m not coding, you’ll probably find me cooking, traveling, training calisthenics, or hanging out with my dog. I live in Vancouver, Canada, so like most Vancouverites, I pretend to love the great outdoors. What I truly love, though, is creating—whether it's a new dish in the kitchen, a personal coding project, or figuring out how to make something work in a way it wasn’t intended to.
+          </p>
+          <p>
+            I believe in constant learning and pushing boundaries, which is why I’m always exploring new tech like blockchain and experimenting with different tools. My goal? To keep building, keep growing, and find the right team where I can make an impact.
+          </p>
+
           </div>
         </div>
         <div className="lg:pl-20">

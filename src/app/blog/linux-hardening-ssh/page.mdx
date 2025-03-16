@@ -1,0 +1,173 @@
+import { ArticleLayout } from '@/components/blog/article-layout'
+import Alert from '@/components/blog/alert'
+import Details from '@/components/blog/details'
+import sshTurtle from './secure_shell.webp'
+
+export const article = {
+  author: 'Michael Pearce',
+  date: '2025-03-15',
+  title: 'Linux Hardening Part 1: Securing SSH Access',
+  description:
+    'SSH is a prime target for attackers. In this first part of the Linux Hardening series, we cover key steps to secure SSH access and prevent unauthorized access.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+# Linux Hardening Series: Securing SSH Access 🔐
+
+Welcome to the **Linux Hardening Series**! This blog series will contain technical, but beginner-friendly information for how you can lock down your Linux server against various types of threats. This is **Part 1**, where we focus on **securing SSH**, one of the most common attack vectors on Linux servers.
+
+By default, SSH is **open to brute-force attacks and mass scans**, making it a prime target for hackers. Here’s how to **lock it down** while keeping it **easy to use**.
+
+<Image src={sshTurtle} alt="Turtle wearing armor" />
+
+---
+
+## Step 1: Install Fail2Ban to Block Brute Force Attacks
+
+Fail2Ban is a general-purpose intrusion prevention tool. It **automatically bans IPs** that fail multiple SSH login attempts. To install and enable it:
+
+```bash
+sudo apt update && sudo apt install fail2ban -y
+sudo systemctl enable --now fail2ban
+```
+
+Check if it's running:
+
+```bash
+sudo systemctl status fail2ban
+```
+
+Fail2Ban comes with a **default SSH protection rule**, but you can tweak it in `/etc/fail2ban/jail.local`. Fail2Ban can also be configured to secure other services, such as FTP, Postfix, Apache/Nginx web servers, MySQL, and more. It does a lot with very minimal configuration.
+
+---
+
+## Step 2: Use SSH Keys Instead of Passwords  
+
+SSH keys **completely eliminate password brute-force attacks**. To generate an SSH key:
+
+```bash
+ssh-keygen -t ed25519 -C "your@email.com"
+```
+
+Copy your key to the server:
+
+```bash
+ssh-copy-id user@yourserver
+```
+
+Or manually add it to `~/.ssh/authorized_keys` on the server.
+
+<Alert variant="info" title="Why use ED25519?">
+  It's faster and has a much smaller key size than RSA while offering equivalent or better security. 
+  In most cases, either option is secure, but some legacy systems may only support RSA.
+</Alert>
+
+### Managing Multiple Users and Devices
+
+If multiple users need SSH access, each person should have their own key—**never share a single key across multiple users**. Similarly, if you log in from multiple devices (e.g., laptop, desktop, phone), **each device should have its own unique key**. This keeps access secure and makes it easy to revoke a single key if needed without affecting others.
+
+---
+
+## Step 3: Disable Password Authentication  
+
+Now that SSH keys are set up, **disable password logins** in `/etc/ssh/sshd_config`:
+
+```bash
+PasswordAuthentication no
+PermitRootLogin no
+```
+
+Then restart SSH:
+
+```bash
+sudo systemctl restart sshd
+```
+
+---
+
+## Step 4: Proper Key Management & Permissions  
+
+**Correct file permissions** are critical for SSH security:
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+chmod 644 ~/.ssh/id_ed25519.pub
+chmod 600 ~/.ssh/id_ed25519
+```
+
+<Details title="why does this matter?">
+    If these permissions are too open, SSH will **refuse to authenticate** for security reasons.
+</Details>
+
+---
+
+## Step 5: Change the SSH Port (Optional, But Recommended)
+
+Changing the SSH port won't stop a targeted attacker—they can easily find it with full port scan. However, security is about layers—this simple change reduces noise from mass scanners and automated attacks, making your logs cleaner and your attack surface slightly smaller.
+
+To change your SSH port, edit `/etc/ssh/sshd_config`:
+
+```bash
+Port 22222  # Pick a non-standard port (1024-65535)
+```
+
+Then restart SSH:
+
+```bash
+sudo systemctl restart sshd
+```
+
+<Alert variant="warning" title="Make sure your firewall allows the new port">
+  You can lock yourself out of your server if you change the SSH port without opening it in your firewall!
+</Alert>
+```bash
+sudo ufw allow 22222/tcp
+```
+
+---
+
+## Other Simple Tricks & Things to Keep in Mind  
+
+**Limit Who Can SSH In**  
+Edit `/etc/ssh/sshd_config` to allow only specific users:
+
+```bash
+AllowUsers yourusername
+```
+
+**Enable Two-Factor Authentication (2FA) for SSH**  
+You can add **Google Authenticator or YubiKey** support for extra security.
+
+**Monitor SSH Logs Regularly**  
+Run:
+
+```bash
+sudo journalctl -u sshd --since "1 hour ago"
+```
+
+Or use:
+
+```bash
+sudo grep "Failed password" /var/log/auth.log
+```
+
+---
+
+## Wrapping Up: What’s Next in the Series?  
+
+Security isn’t about a single fix—it’s about stacking multiple layers of protection. The steps above won’t make your system invincible, but they’ll make your SSH service a much harder target.
+
+This was **Part 1 of the Linux Hardening Series**. In future posts, we’ll cover:
+
+- **Firewall Rules & Network Security**
+- **Hardening File Permissions & User Access**
+- **Introduction to Snort IDS/IPS** 
+
+Stay tuned for more **practical security tips** to **keep your Linux server locked down!** 🔐

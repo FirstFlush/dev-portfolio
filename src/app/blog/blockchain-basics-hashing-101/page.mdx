@@ -1,0 +1,158 @@
+import { ArticleLayout } from '@/components/blog/article-layout'
+import Alert from '@/components/blog/alert'
+import CodeBlock from '@/components/blog/code-block'
+import hashbrowns from './hashbrowns.webp'
+
+export const article = {
+  author: 'Michael Pearce',
+  date: '2025-03-16',
+  title: 'Blockchain Basics: Hashing 101',
+  description:
+    'Hashing is a fundamental concept in cryptography and blockchain technology. This post breaks down what hashing is, how it works, and why it’s used in Bitcoin and beyond.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+# Blockchain Basics: Hashing 101
+
+So what even is hashing?
+
+Hashing is one of those core ideas in cryptography and blockchain that sounds more complicated than it actually is. Part of the confusion comes from the terminology, for example it would be accurate to say:
+
+>A hash function hashes data to produce a hash.
+
+But that is just downright confusing. So what does this actually mean?
+
+A hash function takes an input of any size—whether it’s a string of text, a number, or an entire file—and runs it through an algorithm to produce a fixed-length output, known as a hash (also called a **message digest**).
+
+>Think of it like a super-complicated blender—you throw in any data, and it gets scrambled into a completely different-looking string of characters. But unlike a real blender, if you put the exact same input in, you will always get the same output.
+
+At first, this might sound abstract, but once you see it in action, it makes perfect sense. In this post, we'll break down hashing in a way that makes sense, show how a small input change completely alters the output, and explain why it’s a critical piece of any blockchain.
+
+<Image src={hashbrowns} alt="Hashbrowns on a plate" />
+
+---
+
+## What is Hashing?
+
+A hash function is a mathematical algorithm that takes an input, scrambles it, and produces a fixed-length output called a hash. The key properties of a good hash function are:
+
+- **One-way:** You cannot reverse-engineer the original input from the hash (message digest).
+
+- **Deterministic:** The same input always produces the same hash.
+
+- **Small input change = completely different output:** Even the tiniest difference in input drastically changes the hash.
+
+- **Fixed-length output:** No matter the size of the input, the hash is always the same length.
+
+- **Fast computation:** Hash functions are designed to be computed quickly.
+
+- **Different from encryption:** Hashing has no decryption key—it’s not meant to be reversed.
+
+<Alert variant="info" title="Why is hashing so important?">
+  Hashing is used everywhere in tech—from **password storage** to **file integrity checks** to **digital signatures** in Bitcoin transactions.
+</Alert>
+
+---
+
+## The Avalanche Effect: Small Changes, Big Differences
+
+A key property of cryptographic hashes is that a tiny change in input completely changes the output. This is called the **avalanche effect**.
+
+Let’s take three similar words and hash them using SHA-256:
+
+<CodeBlock>
+"cat"  =>  77af778b51abd4a3c51c5ddd97204a9c3ae614ebccb75a606c3b6865aed6744e  
+"hat"  =>  18e1dd392168f601d0e568612a2bf40e6555c033e033b580ae6627d8aeee1150  
+"bat"  =>  ca5bcec12f716f44d9745d349cc80422f0d14cbab09329caf533bef7c2d952eb  
+</CodeBlock>
+
+Even though the inputs are **almost identical**, their hash outputs are **completely different**. This makes hash functions extremely useful for **detecting even the smallest changes in input data**.
+
+---
+
+## Hashing in Bitcoin: Transaction Signatures
+
+Okay, so how is hashing relevant to Bitcoin? In Bitcoin, or any blockchain, every transaction is hashed. This hash forms a **unique signature** for the transaction. But what makes this really powerful is that each transaction contains the hash of the previous transaction, forming a continuous, unbreakable chain.
+
+Let’s look at a **simplified example** with fake Bitcoin addresses to see this in action.
+
+A transaction contains:
+
+- **Sender:** `bc1qgdjqv0av3q5`
+- **Receiver:** `bc1ql49ydapnjaf` 
+- **Amount:** `0.5 BTC`
+- **Timestamp:** `1640995200` (Unix time)
+- **Previous Transaction Hash:** `6da0633528deaa0144e7b058315f0b753ec0b945163a72bf96a0d18180f9de0d`
+- **Other details** (not shown here for simplicity's sake)
+
+All these values are combined and formatted into a structured transaction, then hashed. The **simplified** idea is:
+
+<CodeBlock>
+Sender + Receiver + Amount + Timestamp + Previous Hash
+
+=
+
+bc1qgdjqv0av3q5bc1ql49ydapnjaf0.516409952006da0633528deaa0144e7b058315f0b753ec0b945163a72bf96a0d18180f9de0d
+</CodeBlock>
+
+Now, let’s **hash it with SHA-256**. You can try it yourself using an online SHA-256 calculator [here](https://emn178.github.io/online-tools/sha256.html). We get the result:
+
+<CodeBlock>
+dea4b5ec10c7a4c11cbb0a6f85bc1ad4c3cda4d8ecf0a24b4c37509e5c758b19
+</CodeBlock>
+
+This **transaction hash** serves as a **unique fingerprint** for this specific transaction. Every new transaction takes the hash from the previous one and uses it as an input, creating an immutable chain that can be traced all the way back to the genesis block—the very first Bitcoin transaction ever mined.
+
+Hashing is what puts the "chain" in blockchain—a sequence of transactions, each cryptographically linked to the last, forming an unbreakable, tamper-proof ledger.
+
+<Alert variant="info" title="Bitcoin Uses Double Hashing">
+  Bitcoin doesn't just hash transactions **once**—it applies SHA-256 **twice**. This algorithm is known as SHA-256d.  
+  This extra step helps protect against **length extension attacks**, which SHA-256 alone can be vulnerable to.
+</Alert>
+
+---
+
+## Other Uses for Hashing
+
+Hashing isn’t just for blockchain—it’s everywhere in computer science. From organizing data in software development to securing sensitive information, hashing is a fundamental tool that keeps systems efficient, reliable, and secure.
+
+Beyond blockchain, it plays a crucial role in:
+
+### **Password Storage**
+Websites store hashed passwords instead of plaintext ones. When you log in, the password you enter is hashed, and the system compares the result to the stored hash. If they match, access is granted.
+
+This is why your email provider can verify your password but can’t retrieve it if you forget it—because they store only the hash, not the actual password.
+
+### **File Integrity Checks**
+Hashes ensure files **haven’t been tampered with** after download. Since files are just sequences of bits, they can be hashed like any other data.
+
+If even a **single bit** of a file is altered, its hash **completely changes**, making tampering instantly detectable.
+
+### **Digital Signatures**
+Hashing is used to **verify authenticity** in digital signatures. When you sign a document online, the system hashes the document’s contents and uses cryptography to create a unique signature.
+
+Later, anyone can verify the signature by checking that the document still produces the same hash, proving it hasn’t been altered.
+
+---
+
+## Want to Dive Deeper?
+
+If you're a nerd like me and want to explore hashing **on a deeper level**, here are some great resources:  
+
+📌 [learn me a bitcoin](https://learnmeabitcoin.com/technical/cryptography/hash-function/)  
+📌 [Cornell University](https://www.cs.cornell.edu/courses/cs312/2008sp/lectures/lec21.html)  
+📌 [IBM Quantum Learning](https://learning.quantum.ibm.com/course/practical-introduction-to-quantum-safe-cryptography/cryptographic-hash-functions)  
+
+---
+
+## Wrapping Up
+
+Hashing is a core building block of cryptography and blockchain. It ensures data integrity, security, and uniqueness. As we’ve seen, it’s what makes the "chain" in blockchain. Hopefully it feels a little less like magic now.
+
+This post is the first of the new Blockchain Basics series. In future posts, we’ll explore UTXOs, consensus mechanisms, Byzantine Fault Tolerance, and more—breaking down the pieces that make Bitcoin and other blockchains tick.

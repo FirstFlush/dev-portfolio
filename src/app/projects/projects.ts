@@ -12,7 +12,8 @@ import {
   RedisOriginal,
   PlaywrightOriginal,
   MaterialuiOriginal,
-  FastapiOriginal
+  FastapiOriginal,
+  DockerOriginal
 } from 'devicons-react'
 
 interface Project {
@@ -30,7 +31,7 @@ export const projects: Project[] = [
     description:
       "A full-stack, non-profit project providing real-time resources for vulnerable people in Vancouver. Built with Django REST Framework, Next.js, PostgreSQL (GIS), Redis, Celery, and Twilio for SMS-based assistance.",
     link: { href: "https://github.com/firstflush/street_ninja", label: "github.com" },
-    logos: [PythonOriginal, DjangoPlain, RedisOriginal, PostgresqlOriginal],
+    logos: [PythonOriginal, DjangoPlain, RedisOriginal, PostgresqlOriginal, DockerOriginal],
   },
   {
     name: 'Street Ninja Website',
@@ -86,7 +87,7 @@ export const projects: Project[] = [
     description:
       'A simple React-based project documenting the build of a Tesla Model 3 racecar. It includes progress updates, modifications, and technical details on the build process.',
     link: { href: 'https://github.com/firstflush/nikki', label: 'github.com' },
-    logos: [JavascriptOriginal, ReactOriginal, MaterialuiOriginal],
+    logos: [JavascriptOriginal, ReactOriginal, MaterialuiOriginal, DjangoPlain],
   },
   {
     name: "Tortoise Shell",

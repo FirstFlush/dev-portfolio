@@ -1,13 +1,7 @@
 
 # temporary ignores:
-images/
-images/*
 src/images/
 src/images/*
-blog/*/
-src/app/blog/*/
-src/app/projects
-src/app/projects/*
 
 # dependencies
 /node_modules

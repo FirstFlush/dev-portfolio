@@ -6,7 +6,8 @@ import {
   StreetNinjaIcon,
 } from '@/components/icons/social-icons'
 import Newsletter from '@/components/newsletter'
-import Photos from '@/components/photos'
+// import Photos from '@/components/photos'
+import { links } from '@/data/links'
 import { getAllArticles } from '@/utils/articles'
 import JobHistory from '@/components/history'
 import BlogSnippet from '@/components/blog-snippet'
@@ -27,17 +28,17 @@ export default async function Home() {
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://github.com/firstflush/"
+              href={links.github}
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://www.linkedin.com/in/michael-pearce-340279286/"
+              href={links.linkedin}
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
             <SocialLink
-              href="https://streetninja.ca/"
+              href={links.street_ninja}
               aria-label="Street Ninja website"
               icon={StreetNinjaIcon}
             />

@@ -2,7 +2,7 @@ import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
-
+import { links } from '@/data/links'
 import { Container } from '@/components/container'
 import {
   GitHubIcon,
@@ -88,21 +88,21 @@ export default function About() {
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="https://github.com/firstflush/" icon={GitHubIcon} className="mt-4">
+            <SocialLink href={links.github} icon={GitHubIcon} className="mt-4">
               Follow on GitHub
             </SocialLink>
-            <SocialLink href="https://www.linkedin.com/in/michael-pearce-340279286/" icon={LinkedInIcon} className="mt-4">
+            <SocialLink href={links.linkedin} icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
             </SocialLink>
-            <SocialLink href="https://streetninja.ca/" icon={StreetNinjaIcon} className="mt-4">
+            <SocialLink href={links.street_ninja} icon={StreetNinjaIcon} className="mt-4">
               Street Ninja
             </SocialLink>
             <SocialLink
-              href="michaelpearce604@gmail.com"
+              href={`mailto:${links.email}`}
               icon={MailIcon}
               className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
             >
-              michaelpearce604@gmail.com
+              {links.email}
             </SocialLink>
           </ul>
         </div>

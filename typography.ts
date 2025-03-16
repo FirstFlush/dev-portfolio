@@ -144,7 +144,7 @@ export default {
 
           // Quotes
           blockquote: {
-            paddingLeft: theme('spacing.6'),
+            paddingLeft: theme('spacing.4'),
             borderLeftWidth: theme('borderWidth.2'),
             borderLeftColor: 'var(--tw-prose-quote-borders)',
             fontStyle: 'italic',

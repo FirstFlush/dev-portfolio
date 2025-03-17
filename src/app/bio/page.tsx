@@ -1,7 +1,7 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import clsx from 'clsx'
+import TiltedImage from '@/components/tilted-image'
+import SocialLink from '@/components/social-link'
+import { MailIcon } from '@/components/icons/icons'
 import { links } from '@/data/links'
 import { Container } from '@/components/container'
 import {
@@ -9,42 +9,8 @@ import {
   LinkedInIcon,
   StreetNinjaIcon,
 } from '@/components/icons/social-icons'
-import portraitImage from '@/images/photos/mountain_squat.webp'
+import restaurantImage from '@/images/photos/restaurant_smile_cropped.webp'
 
-function SocialLink({
-  className,
-  href,
-  children,
-  icon: Icon,
-}: {
-  className?: string
-  href: string
-  icon: React.ComponentType<{ className?: string }>
-  children: React.ReactNode
-}) {
-  return (
-    <li className={clsx(className, 'flex')}>
-      <Link
-        href={href}
-        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
-      >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
-        <span className="ml-4">{children}</span>
-      </Link>
-    </li>
-  )
-}
-
-function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
-      />
-    </svg>
-  )
-}
 
 export const metadata: Metadata = {
   title: 'Bio',
@@ -58,24 +24,29 @@ export default function About() {
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none">
-            <Image
-              src={portraitImage}
-              alt=""
-              sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+            <TiltedImage
+              src={restaurantImage}
+              alt="Me at a restaurant"
             />
+
           </div>
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I'm Michael Pearce, a full-stack developer in Vancouver, building software that solves real problems.
+            Who I Am & What I Do
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
           <p>
-            I'm a self-taught full-stack developer with a passion for building software that solves real-world problems. My main stack is Python and TypeScript, but I’ve also been diving into C# lately. Before tech, I worked in construction, so I know what it’s like to build things from the ground up—whether it’s with concrete or code.
+            I'm a self-taught full-stack developer with a passion for building software that solves real-world problems. My main stack is Python and TypeScript, but I’ve also been diving into C# lately. Before tech, I worked in construction, so I know how deeply satisfying it is to build things from the ground up—whether it’s with concrete or code.
           </p>
           <p>
-            I’m the founder of Street Ninja, a non-profit project designed to help vulnerable people find essential resources in real-time. Beyond that, I have a strong hobbyist interest in cybersecurity (I enjoy CTFs on TryHackMe and VulnHub) and messing around with microcontrollers—though I try not to burn my house down in the process.
+            I started Street Ninja, my non-profit, to help people on Vancouver’s Downtown Eastside find essential resources when they need them. It’s an SMS-based tool designed to help people living on the street quickly locate shelters, food services, washrooms, public wifi, and other critical resources—without hassle. The guiding philosophy behind Street Ninja is <span className="font-semibold dark:text-zinc-300">immediate usefulness</span>. It’s not a solution to homelessness, and it won’t turn someone’s life around by itself. But it can help them find what they need <span className="font-semibold dark:text-zinc-300">right now</span>, so they can keep pushing forward.
+          </p>
+          <p>
+            What is currently a local, Vancouver-based project is something I believe every city could use. My long-term goal is to see it expand beyond Vancouver.
+          </p>
+          <p>
+            Beyond that, I have a strong hobbyist interest in cybersecurity (I enjoy CTFs on TryHackMe and VulnHub) and messing around with microcontrollers—though I try not to burn my house down in the process.
           </p>
           <p>
             When I’m not coding, you’ll probably find me cooking, traveling, training calisthenics, or hanging out with my dog. I live in Vancouver, Canada, so like most Vancouverites, I pretend to love the great outdoors. What I truly love, though, is creating—whether it's a new dish in the kitchen, a personal coding project, or figuring out how to make something work in a way it wasn’t intended to.

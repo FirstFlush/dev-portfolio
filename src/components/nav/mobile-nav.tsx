@@ -4,6 +4,7 @@ import {
   PopoverPanel,
   PopoverBackdrop,
 } from '@headlessui/react'
+import { links } from '@/data/links'
 import { ChevronDownIcon, CloseIcon, ArrowDownIcon } from '../icons/icons'
 import MobileNavItem from './mobile-nav-item'
 
@@ -39,7 +40,7 @@ const MobileNavigation = (
             <MobileNavItem href="/bio">Bio</MobileNavItem>
             <MobileNavItem href="/blog">Blog</MobileNavItem>
             <MobileNavItem href="/projects">Projects</MobileNavItem>
-            <MobileNavItem download href="/resume.pdf">
+            <MobileNavItem download href={links.resume}>
               Résumé <ArrowDownIcon className="ml-1" />
             </MobileNavItem>
           </ul>

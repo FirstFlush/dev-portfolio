@@ -1,5 +1,6 @@
 import NavItem from "./nav-item";
 import { ArrowDownIcon } from "../icons/icons";
+import { links } from "@/data/links";
 
 const DesktopNavigation = (props: React.ComponentPropsWithoutRef<'nav'>) => {
   return (
@@ -8,7 +9,7 @@ const DesktopNavigation = (props: React.ComponentPropsWithoutRef<'nav'>) => {
         <NavItem href="/bio">Bio</NavItem>
         <NavItem href="/blog">Blog</NavItem>
         <NavItem href="/projects">Projects</NavItem>
-        <NavItem download href="/resume.pdf">
+        <NavItem download href={links.resume}>
           Résumé <ArrowDownIcon className="ml-1"/>
         </NavItem>
       </ul>

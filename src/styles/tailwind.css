@@ -34,3 +34,9 @@
   --text-9xl: 8rem;
   --text-9xl--line-height: 1;
 }
+
+@layer components {
+  .link {
+    @apply text-teal-700 transition-colors duration-200 hover:text-teal-300 dark:text-teal-400 dark:hover:text-teal-300;
+  }
+}

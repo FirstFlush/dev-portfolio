@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ContainerInner, ContainerOuter } from '@/components/container'
 import React from 'react'
+import { links } from '@/data/links'
 import { ArrowDownIcon } from '../icons/icons'
 
 interface NavLinkProps extends React.ComponentPropsWithoutRef<'a'> {
@@ -24,7 +25,7 @@ function NavLink({
 
 export function Footer() {
   return (
-    <footer className="mt-32 flex-none">
+    <footer className="mt-16 lg:mt-32 flex-none">
       <ContainerOuter>
         <div className="border-t border-zinc-100 py-10 dark:border-zinc-700/40">
           <ContainerInner>
@@ -33,7 +34,7 @@ export function Footer() {
                 <NavLink href="/bio">Bio</NavLink>
                 <NavLink href="/blog">Blog</NavLink>
                 <NavLink href="/projects">Projects</NavLink>
-                <NavLink download href="/resume.pdf">Résumé <ArrowDownIcon className="ml-1"/></NavLink>
+                <NavLink download href={links.resume}>Résumé <ArrowDownIcon className="ml-1"/></NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy; {new Date().getFullYear()} Michael Pearce. All rights

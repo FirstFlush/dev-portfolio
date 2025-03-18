@@ -85,7 +85,7 @@ export const projects: Project[] = [
   {
     name: 'Nikki Racing',
     description:
-      'A simple React-based project documenting the build of a Tesla Model 3 racecar. It includes progress updates, modifications, and technical details on the build process.',
+      "A full-stack React/Django project documenting the build of a Tesla Model 3 racecar, nicknamed 'nikki'.",
     link: { href: 'https://github.com/firstflush/nikki', label: 'github.com' },
     logos: [JavascriptOriginal, ReactOriginal, MaterialuiOriginal, DjangoPlain],
   },
@@ -99,8 +99,29 @@ export const projects: Project[] = [
   {
     name: "django-affiliate-marketing",
     description:
-      "A Django plugin for setting up an affiliate marketing program, allowing businesses to track referrals and commissions seamlessly.",
+      "A Django Rest Framework plugin for setting up an affiliate marketing program, allowing businesses to track referrals and commissions seamlessly.",
     link: { href: "https://github.com/firstflush/django-affiliate-marketing", label: "github.com" },
+    logos: [PythonOriginal, DjangoPlain],
+  },
+  {
+    name: 'kitchen_sink',
+    description:
+      'A Bash script that automates hash-cracking by recursively collecting every wordlist in a directory and feeding them to John the Ripper. Designed primarily for use with SecLists, it can also work with any custom wordlist collection. Used for capture-the-flag (CTF) challenges.',
+    link: { href: 'https://github.com/firstflush/kitchen_sink', label: 'github.com' },
+    logos: [BashOriginal],
+  },
+  {
+    name: 'lukio',
+    description:
+      '(L)inux (U)nified (K)ey IO: A Bash script for mounting and unmounting LUKS-encrypted volumes via different backends. Originally designed to support zuluCrypt, cryptsetup, and udisksctl, it currently wraps zuluCrypt-cli, simplifying the syntax for easier usage',
+    link: { href: 'https://github.com/firstflush/lukio', label: 'github.com' },
+    logos: [BashOriginal],
+  },
+  {
+    name: 'BTC/LTC payment processor',
+    description:
+      "A Django-based Bitcoin payment processor that integrates with the Electrum BTC wallet via JSON-RPC. It converts CAD to BTC using CoinMarketCap and CoinGecko APIs, generates unique deposit addresses from the merchant’s master public key, and ensures secure authentication with HMAC. Originally built as a proof of concept for handling crypto payments for online dispensaries—without ever controlling private keys. Also has support for Electrum's LTC wallet.",
+    link: { href: 'https://github.com/firstflush/payment', label: 'github.com' },
     logos: [PythonOriginal, DjangoPlain],
   },
   {
@@ -109,6 +130,27 @@ export const projects: Project[] = [
       'A Bash wrapper for Arduino CLI, allowing easier filtering of Arduino packages by name, author, and maintainer.',
     link: { href: 'https://github.com/firstflush/arduino-lib', label: 'github.com' },
     logos: [BashOriginal],
+  },
+  {
+    name: 'Django HMAC Plugin',
+    description:
+      "A fork of github.com/aaronlelevier/django-rest-framework-hmac, originally built by another dev but left broken on Django 3+. I fixed the header handling, cleaned up some internals, and made it fully functional for modern Django/DRF setups.",
+    link: { href: 'https://github.com/FirstFlush/django-rest-framework-hmac', label: 'github.com' },
+    logos: [PythonOriginal, DjangoPlain],
+  },
+  {
+    name: 'CTF Time',
+    description:
+      " A Python CLI tool to automate the initial recon steps of a Capture The Flag (CTF) challenge. It streamlines setup by creating a new directory, running an Nmap scan, saving results, querying Searchsploit for vulnerabilities on whichever services/versions are running on the open ports, and launching FFUF fuzzing on any detected web servers. Built with Python, Click, and the Python Nmap library.",
+    link: { href: 'https://github.com/FirstFlush/ctf-time', label: 'github.com' },
+    logos: [PythonOriginal],
+  },
+  {
+    name: 'Sudoku Solver',
+    description:
+      'A simple Python script that takes a Sudoku board, as a 2D array of integers, and solves it using recursion and a backtracking algorithm. A fun project to build, although it definitely takes the fun out of playing Sudoku.',
+    link: { href: 'https://github.com/firstflush/sudoku', label: 'github.com' },
+    logos: [PythonOriginal],
   },
   // {
   //   name: "Unnamed",

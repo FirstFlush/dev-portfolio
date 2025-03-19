@@ -1,0 +1,51 @@
+## **How Street Ninja Works Under the Hood**  
+
+Street Ninja isn’t just a list of resources—it’s a system designed to **interpret freeform text, extract meaning, and return relevant, structured results** in seconds. Here’s how it works behind the scenes.  
+
+### **Message Lifecycle: From Text to Response**  
+
+Every message follows a structured path:  
+
+1. **User sends a text** (e.g., `"FOOD Main & Pender"`).  
+2. **Twilio forwards it** to Street Ninja’s webhook.  
+3. **Message is analyzed** to extract keywords (like `FOOD`), location data, and any optional filters the user included.  
+4. **Location is geocoded** into GPS coordinates.  
+5. **Cached resource data** is queried for nearby matches.  
+6. **A response is formatted** and sent back within seconds.  
+
+### **Parsing Locations from Freeform Text**  
+
+Street Ninja **doesn’t rely on GPS**—users type their location in any format, and the system extracts the most likely place:  
+
+- **Addresses** → Recognized by street numbers & suffixes (e.g., `"1065 Granville St"`).  
+- **Intersections** → Detected when `"and"` or `"&"` is present (e.g., `"Main & Hastings"`).  
+- **Landmarks** → Matched against a list of known places (e.g., `"Science World"`).  
+
+Each rule contributes **confidence points** to determine whether the input is an address, an intersection, or a landmark. If the first geocoder (Nominatim) fails, we retry with OpenCage to improve accuracy.  
+
+### **Session Handling with Redis**  
+
+Because SMS is stateless, I built a **custom session system** using Redis:  
+
+- Each phone number gets a **temporary session** which resets with every message and expires after 1 hour of inactivity. 
+- The session tracks **what results a user has seen** (so `"MORE"` picks up where they left off).  
+- **On the first message in a new session**, the user gets a brief welcome message wrapping the response, explaining how to use the service.  
+- **After that, messages are direct and to the point**—since SMS character space is limited, we don’t waste words.  
+
+This allows for **follow-up queries** without requiring a full re-explanation every time.
+
+### **Core Tech Stack**  
+
+Street Ninja is built for **speed, reliability, and scalability**, using:  
+
+- **Django & Django REST Framework** – API backend.  
+- **Twilio** – SMS handling.  
+- **Redis** – Caching and session management.  
+- **Celery + Django-Celery-Beat** – Background tasks for scheduled data fetching.  
+- **PostGIS + Geopy** – Geospatial queries & location parsing.  
+- **OpenRouteService** – Step-by-step directions.  
+- **Vancouver Open Data API** – Primary data source for resources, with plans to integrate more cities and data partners.
+- **Docker** – Fully containerized for easy deployment & scaling.
+
+The system is designed to be **extensible**, so we can add more resource types and integrate new cities in the future.  
+

@@ -1,0 +1,47 @@
+## **Challenges & Lessons Learned**  
+
+### **Parsing Locations from SMS**  
+
+By far, the biggest challenge has been **accurately pulling location data from messy, unstructured text.**  
+
+Unlike an app with built-in GPS, Street Ninja relies on users **typing out their location**, which can come in **a hundred different formats**. Some will send a full address (`"1065 Granville St"`), others just a street name (`"Granville"`), an intersection (`"Main & Hastings"`), or even a landmark (`"Science World"`).  
+
+To handle this, I built a **rule-based parser** that assigns **confidence points** to different patterns:  
+- If the message contains a **number**, it's likely part of an **address**.  
+- If it contains `"and"` or `"&"`, it's likely an **intersection**.  
+- If nothing matches but it contains a known **landmark name**, it's a **landmark query**.  
+
+The system weighs these factors, determines the most probable location, and **geocodes it** into GPS coordinates.  
+
+### **Handling Edge Cases**  
+
+Some cases are straightforward. Others? Not so much.  
+
+- `"Food on Water St"` → **"Water" is both a street and a keyword for drinking fountains.**  
+- `"Food Main Pender"` → **Missing "and," so is this a single street name or an intersection?**  
+- `"Toilet"` → **Does the user mean a public washroom, or are they asking for something else entirely?**  
+
+To reduce errors, I built a **fallback system** that checks for:  
+✔ **Street suffixes & directions** (to avoid misidentifying words as locations).  
+✔ **Known junk words** (so `"I need food"` doesn’t break the parser).  
+✔ **Backup geocoding API** (in case Nominatim fails, OpenCage steps in).  
+
+Even with these improvements, **perfect parsing is impossible**—but the goal is to get **as close as possible** while keeping it frictionless for users.  
+
+### **Limitations of Free-Tier APIs**  
+
+Everything in Street Ninja **runs on free-tier services** right now, which comes with trade-offs:  
+
+- **Geocoding Accuracy** → Free-tier APIs struggle with edge cases. **Paid plans** have better fuzzy matching.  
+- **Step-by-Step Directions** → The routing APIs I've explored all have less-than-ideal foot traffic routing in their free tiers. **Sometimes it avoids one-way streets that could be walked down.**  
+- **Rate Limits** → Most free routing APIs **rate-limit requests**, which could be a problem if usage scales.  
+
+Right now, the system **works well**, but **funding would improve accuracy, directions, and scalability.**  
+
+### **Running a Non-Profit is a Whole Other Beast**  
+
+The tech side of Street Ninja has been fun to build. But running a **non-profit?** That’s a whole different challenge.  
+
+I love to write code, but navigating **grants, funding, and legal requirements** is completely new to me. Learning this side of things is an ongoing process.  
+
+Right now, my focus is making **Street Ninja the best tool it can be.** If it proves useful, the next challenge is making sure it can **grow, get funding, and help more people in more cities.**  

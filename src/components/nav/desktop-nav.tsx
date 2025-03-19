@@ -9,6 +9,7 @@ const DesktopNavigation = (props: React.ComponentPropsWithoutRef<'nav'>) => {
         <NavItem href="/bio">Bio</NavItem>
         <NavItem href="/blog">Blog</NavItem>
         <NavItem href="/projects">Projects</NavItem>
+        <NavItem href="/street-ninja">Street Ninja</NavItem>
         <NavItem download href={links.resume}>
           Résumé <ArrowDownIcon className="ml-1"/>
         </NavItem>

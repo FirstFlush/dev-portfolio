@@ -36,10 +36,11 @@ const MobileNavigation = (
         </div>
         <nav className="mt-6">
           <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-            <MobileNavItem href="/">Home</MobileNavItem>
+            {/* <MobileNavItem href="/">Home</MobileNavItem> */}
             <MobileNavItem href="/bio">Bio</MobileNavItem>
             <MobileNavItem href="/blog">Blog</MobileNavItem>
             <MobileNavItem href="/projects">Projects</MobileNavItem>
+            <MobileNavItem href="/street-ninja">Street Ninja</MobileNavItem>
             <MobileNavItem download href={links.resume}>
               Résumé <ArrowDownIcon className="ml-1" />
             </MobileNavItem>

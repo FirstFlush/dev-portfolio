@@ -1,7 +1,6 @@
 
-# temporary ignores:
-src/images/
-src/images/*
+src/archive/
+src/archive/*
 
 # dependencies
 /node_modules

@@ -20,10 +20,8 @@ interface Project {
   name: string
   description: string
   link: { href: string, label: string }
-  // logo: React.ComponentType<React.SVGProps<SVGSVGElement>>
   logos: React.ComponentType<{ size?: string | number; color?: string }>[]
 }
-
 
 export const projects: Project[] = [
   {
@@ -152,13 +150,6 @@ export const projects: Project[] = [
     link: { href: 'https://github.com/firstflush/sudoku', label: 'github.com' },
     logos: [PythonOriginal],
   },
-  // {
-  //   name: "Unnamed",
-  //   description:
-  //     "A Bash script for managing zuluCrypt volumes, offering quick and efficient encrypted volume mounting and unmounting via CLI.",
-  //   link: { href: "#", label: "github.com" },
-  //   logo: BashOriginal,
-  // },
 ];
 
 export default projects;

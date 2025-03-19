@@ -5,6 +5,7 @@ import { Layout } from '@/components/layout'
 
 import '@/styles/tailwind.css'
 
+
 export const metadata: Metadata = {
   title: {
     template: '%s - Michael Pearce',
@@ -14,11 +15,14 @@ export const metadata: Metadata = {
   description:
     "I’m Michael Pearce, a full-stack developer and the founder of Street Ninja, a non-profit project that helps vulnerable people find essential resources. I specialize in building practical, impact-driven software that solves real-world problems.",
   alternates: {
-    types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
-    },
+    canonical: process.env.NEXT_PUBLIC_SITE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
+
 
 export default function RootLayout({
   children,

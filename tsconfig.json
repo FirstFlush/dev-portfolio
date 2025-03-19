@@ -25,11 +25,11 @@
   },
   "include": [
     "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", 
-    "src/app/street-ninja/why.mdx",
-    "src/app/street-ninja/how-it-works.mdx",
-    "src/app/street-ninja/tech.mdx",
-    "src/app/street-ninja/challenges.mdx",
-    "src/app/street-ninja/whats-ahead.mdx",
+    "src/app/street-ninja/content/why.mdx",
+    "src/app/street-ninja/content/how-it-works.mdx",
+    "src/app/street-ninja/content/tech.mdx",
+    "src/app/street-ninja/content/challenges.mdx",
+    "src/app/street-ninja/content/whats-ahead.mdx",
   ],
   "exclude": ["node_modules"]
 }

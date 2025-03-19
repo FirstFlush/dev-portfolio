@@ -29,6 +29,7 @@ export default async function Home() {
             <TiltedImage
               src={mountainImage}
               alt="Me with mountains"
+              loading="eager"
             />
 
           </div>
@@ -42,7 +43,7 @@ export default async function Home() {
               I’m Michael Pearce, a full-stack developer and the founder of{' '}
               <Link
                 className="link"
-                href="https://streetninja.ca"
+                href={links.street_ninja}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -59,17 +60,17 @@ export default async function Home() {
           <div className="mt-6 flex gap-6">
             <SocialLink
               href={links.github}
-              aria-label="Follow on GitHub"
+              label="My GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
               href={links.linkedin}
-              aria-label="Follow on LinkedIn"
+              label="My Linkedin"
               icon={LinkedInIcon}
             />
             <SocialLink
               href={links.street_ninja}
-              aria-label="Street Ninja website"
+              label="Street Ninja website"
               icon={StreetNinjaIcon}
             />
           </div>

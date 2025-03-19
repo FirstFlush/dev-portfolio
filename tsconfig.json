@@ -25,7 +25,7 @@
   },
   "include": [
     "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", 
-    "src/app/street-ninja/content/why.mdx",
+    "src/app/street-ninja/content/overview.mdx",
     "src/app/street-ninja/content/how-it-works.mdx",
     "src/app/street-ninja/content/tech.mdx",
     "src/app/street-ninja/content/challenges.mdx",

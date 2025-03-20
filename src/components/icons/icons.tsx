@@ -26,29 +26,6 @@ export function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-// export function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-//   return (
-//     <svg
-//       viewBox="0 0 24 24"
-//       fill="none"
-//       strokeWidth="1.5"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//       aria-hidden="true"
-//       {...props}
-//     >
-//       <path
-//         d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-//         className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-//       />
-//       <path
-//         d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-//         className="stroke-zinc-400 dark:stroke-zinc-500"
-//       />
-//     </svg>
-//   )
-// }
-
 
 export function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -179,6 +156,20 @@ export function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+
+export function HomeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg width="800px" height="800px" viewBox="0 0 16 16" fill="none" {...props}>
+      <path 
+        fillRule="evenodd" 
+        clipRule="evenodd" 
+        d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" 
+        fill="currentColor"
       />
     </svg>
   )

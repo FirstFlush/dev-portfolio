@@ -4,7 +4,7 @@ import ImageCarousel from "@/components/image-carousel"
 import { Container } from "@/components/container"
 import { tabsData } from "./tabsData"
 import Tabs from "@/components/tabs"
-import Link from "next/link"
+
 
 const StreetNinja = () => {
 

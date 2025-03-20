@@ -2,7 +2,7 @@ import DesktopNavigation from "./desktop-nav";
 import MobileNavigation from "./mobile-nav";
 import ThemeToggle from "./theme-toggle";
 import { Container } from "@/components/container";
-import { Avatar, AvatarContainer } from "./avatar";
+import HomeButton from "./home-button";
 
 const Header = () => {
 
@@ -17,9 +17,7 @@ const Header = () => {
       <Container className="top-0 mt-16 w-full">
         <div className="relative flex gap-4">
           <div className="flex flex-1">
-              <AvatarContainer>
-                <Avatar large={false} />
-              </AvatarContainer>
+            <HomeButton />
           </div>
           <div className="flex flex-1 justify-end md:justify-center">
             <MobileNavigation className="md:hidden" />

@@ -164,13 +164,32 @@ export function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function HomeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg width="800px" height="800px" viewBox="0 0 16 16" fill="none" {...props}>
-      <path 
-        fillRule="evenodd" 
-        clipRule="evenodd" 
-        d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" 
-        fill="currentColor"
-      />
-    </svg>
-  )
+      <svg {...props} viewBox="0 0 192 192" xmlSpace="preserve" fill="none" version="1.1">
+        <defs id="defs1009"/>
+        <path id="path8428" fill="none" d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z" style={{
+          // fill: "none",
+          fillOpacity: 1,
+          stroke: "currentColor",
+          strokeWidth: 12,
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeMiterlimit: 5,
+          strokeDasharray: "none",
+          strokeOpacity: 1,
+        }}/>
+      </svg>
+    )
 }
+
+// export function HomeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+//   return (
+//     <svg width="800px" height="800px" viewBox="0 0 16 16" fill="none" {...props}>
+//       <path 
+//         fillRule="evenodd" 
+//         clipRule="evenodd" 
+//         d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" 
+//         fill="currentColor"
+//       />
+//     </svg>
+//   )
+// }

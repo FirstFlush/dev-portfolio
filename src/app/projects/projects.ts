@@ -13,7 +13,9 @@ import {
   PlaywrightOriginal,
   MaterialuiOriginal,
   FastapiOriginal,
-  DockerOriginal
+  DockerOriginal,
+  NugetOriginal,
+  PypiOriginal,
 } from 'devicons-react'
 
 interface Project {
@@ -41,9 +43,9 @@ export const projects: Project[] = [
   {
     name: "Stegosaurus",
     description:
-      "A C# steganography tool that allows users to hide and extract encrypted messages within images using LSB encoding and AES encryption.",
+      "A C# steganography tool that allows users to hide and extract encrypted messages within images using LSB encoding and AES encryption. Includes a CI pipeline with automated testing, and packaged on NuGet.",
     link: { href: "https://github.com/firstflush/Stegosaurus", label: "github.com" },
-    logos: [CsharpOriginal],
+    logos: [CsharpOriginal, NugetOriginal],
   },
   {
     name: "PowerSweep",
@@ -62,16 +64,16 @@ export const projects: Project[] = [
   {
     name: "tire_codes",
     description:
-      "A Python package for parsing and decoding automotive tire codes, providing detailed specifications such as tire width, aspect ratio, load index, and speed rating.",
+      "A Python package for parsing and decoding automotive tire codes, providing detailed specifications such as tire width, aspect ratio, load index, and speed rating. Created a PyPI package.",
     link: { href: "https://github.com/firstflush/tire_codes", label: "github.com" },
-    logos: [PythonOriginal],
+    logos: [PythonOriginal, PypiOriginal],
   },
   {
     name: "canatax",
     description:
-      "A Python tool for quickly calculating Canadian income tax and sales tax rates across provinces, useful for personal finance and business applications.",
+      "A Python tool for quickly calculating Canadian income tax and sales tax rates across provinces, useful for personal finance and business applications. Created a PyPI package.",
     link: { href: "https://github.com/firstflush/canatax", label: "github.com" },
-    logos: [PythonOriginal],
+    logos: [PythonOriginal, PypiOriginal],
   },
   {
     name: 'BlockchainExplorer',

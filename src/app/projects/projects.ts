@@ -16,6 +16,7 @@ import {
   DockerOriginal,
   NugetOriginal,
   PypiOriginal,
+  ViteOriginal,
 } from 'devicons-react'
 
 interface Project {
@@ -43,9 +44,15 @@ export const projects: Project[] = [
   {
     name: "Stegosaurus",
     description:
-      "A C# steganography tool that allows users to hide and extract encrypted messages within images using LSB encoding and AES encryption. Includes a CI pipeline with automated testing, and packaged on NuGet.",
+      "A C# steganography tool that allows users to hide and extract encrypted messages within images using LSB encoding and AES encryption. Includes a CI pipeline with automated testing, and published on NuGet.",
     link: { href: "https://github.com/firstflush/Stegosaurus", label: "github.com" },
     logos: [CsharpOriginal, NugetOriginal],
+  },
+  {
+    name: "Fingerprint Defender",
+    description: "A TypeScript-based browser extension built with Vite that intelligently spoofs browser fingerprinting vectors such as canvas, WebGL, and user-agent metadata. It uses a baseline of the user's real environment to generate realistic spoofed values, aiming to counter modern tracking techniques while maintaining plausible browser behavior.",
+    link: {href: "https://github.com/firstflush/fingerprint-defender", label: "github.com" },
+    logos: [TypescriptOriginal, ViteOriginal],
   },
   {
     name: "PowerSweep",
@@ -64,14 +71,14 @@ export const projects: Project[] = [
   {
     name: "tire_codes",
     description:
-      "A Python package for parsing and decoding automotive tire codes, providing detailed specifications such as tire width, aspect ratio, load index, and speed rating. Created a PyPI package.",
+      "A Python package for parsing and decoding automotive tire codes, providing detailed specifications such as tire width, aspect ratio, load index, and speed rating. Pubished on PyPI.",
     link: { href: "https://github.com/firstflush/tire_codes", label: "github.com" },
     logos: [PythonOriginal, PypiOriginal],
   },
   {
     name: "canatax",
     description:
-      "A Python tool for quickly calculating Canadian income tax and sales tax rates across provinces, useful for personal finance and business applications. Created a PyPI package.",
+      "A Python tool for quickly calculating Canadian income tax and sales tax rates across provinces, useful for personal finance and business applications. Published on PyPI.",
     link: { href: "https://github.com/firstflush/canatax", label: "github.com" },
     logos: [PythonOriginal, PypiOriginal],
   },

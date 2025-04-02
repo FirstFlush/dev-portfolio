@@ -14,7 +14,7 @@ const Tabs = ({ tabs, prose = false }: TabsProps) => {
   return (
     <div>
       {/* Mobile Dropdown (Hidden on Small Screens) */}
-      <div className="sm:hidden">
+      <div className="block sm:hidden">
         <select
           value={currentTab}
           onChange={(e) => setCurrentTab(e.target.value)}
@@ -29,7 +29,7 @@ const Tabs = ({ tabs, prose = false }: TabsProps) => {
       </div>
 
       {/* Desktop Tabs (Hidden on Mobile) */}
-      <nav className="hidden sm:flex space-x-4">
+      <nav className="hidden sm:flex items-start space-x-4">
         {tabs.map((tab) => (
           <button
             key={tab.name}

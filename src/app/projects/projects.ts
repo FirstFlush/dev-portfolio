@@ -58,7 +58,7 @@ export const projects: Project[] = [
   {
     name: "UserAgent.One",
     description: "An API built with TypeScript and Fastify that makes the user-agents Node.js package accessible from the browser. Lightweight, fast, filterable, and with thousands of fresh user agents always up-to-date.",
-    link: {href: "https://github.com-firstflush/useragent-one", label: "github.com"},
+    link: {href: "https://github.com/firstflush/useragent-one", label: "github.com"},
     logos: [TypescriptOriginal, FastifyOriginal]
   },
   {

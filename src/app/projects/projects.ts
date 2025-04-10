@@ -17,6 +17,7 @@ import {
   NugetOriginal,
   PypiOriginal,
   ViteOriginal,
+  FastifyOriginal,
 } from 'devicons-react'
 
 interface Project {
@@ -53,6 +54,12 @@ export const projects: Project[] = [
     description: "A TypeScript-based browser extension built with Vite that intelligently spoofs browser fingerprinting vectors such as canvas, WebGL, and user-agent metadata. It uses a baseline of the user's real environment to generate realistic spoofed values, aiming to counter modern tracking techniques while maintaining plausible browser behavior.",
     link: {href: "https://github.com/firstflush/fingerprint-defender", label: "github.com" },
     logos: [TypescriptOriginal, ViteOriginal],
+  },
+  {
+    name: "UserAgent.One",
+    description: "An API built with TypeScript and Fastify that makes the user-agents Node.js package accessible from the browser. Lightweight, fast, filterable, and with thousands of fresh user agents always up-to-date.",
+    link: {href: "https://github.com-firstflush/useragent-one", label: "github.com"},
+    logos: [TypescriptOriginal, FastifyOriginal]
   },
   {
     name: "PowerSweep",

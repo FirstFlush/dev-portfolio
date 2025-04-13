@@ -13,7 +13,7 @@ const Tabs = ({ tabs, prose = false }: TabsProps) => {
 
   return (
     <div>
-      {/* Mobile Dropdown (Hidden on Small Screens) */}
+      {/* Mobile Dropdown (Hidden on larger screens) */}
       <div className="block sm:hidden">
         <select
           value={currentTab}
@@ -28,15 +28,15 @@ const Tabs = ({ tabs, prose = false }: TabsProps) => {
         </select>
       </div>
 
-      {/* Desktop Tabs (Hidden on Mobile) */}
-      <nav className="hidden sm:flex items-start space-x-4">
+      {/* Desktop Tabs (Hidden on mobile) */}
+      <nav className="hidden sm:flex items-center">
         {tabs.map((tab) => (
           <button
             key={tab.name}
             onClick={() => setCurrentTab(tab.name)}
-            className={`px-4 py-2 text-sm font-medium cursor-pointer transition-colors duration-200 ${
+            className={`lg:px-4 patch-range:px-2 px-4 py-2 text-sm h-[64px] border-b-2 border-transparent font-medium cursor-pointer transition-colors duration-200 ${
               tab.name === currentTab
-                ? "border-b-2 text-teal-600 border-teal-400 dark:text-teal-300"
+                ? " text-teal-600 !border-teal-400 dark:text-teal-300"
                 : "text-zinc-700 dark:text-zinc-300 dark:hover:text-teal-500"
             }`}
           >

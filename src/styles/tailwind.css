@@ -45,3 +45,15 @@
     @apply text-teal-500 hover:text-teal-800 transition-colors duration-200 dark:text-teal-300 underline dark:hover:text-teal-500;
   }
 }
+
+@layer utilities {
+
+  @media (min-width: 1024px) and (max-width: 1107px) {
+
+    .patch-range\:px-2 {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+    
+  }
+}

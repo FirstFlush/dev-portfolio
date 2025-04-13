@@ -29,7 +29,7 @@ export default function Projects() {
               
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link target="_blank" rel="noopener noreferrer" href={project.link.href}>{project.name}</Card.Link>
+              <Card.Link target="_blank" rel="noopener noreferrer" href={project.links[0].href}>{project.name}</Card.Link>
             </h2>
             <Card.Description>{project.description}</Card.Description>
             <p className={clsx(
@@ -38,8 +38,17 @@ export default function Projects() {
               "sm:text-zinc-400 sm:dark:text-zinc-200",
               "text-teal-500",
             )}>
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
+
+            <div className="ml-2">
+              {project.links.map((link) => (
+                <div key={link.href} className="flex items-center gap-2">
+                  <link.icon size={14}/>
+                  <div>{link.label}</div>
+                </div>
+              ))}
+
+            </div>
+
             </p>
           </Card>
         ))}

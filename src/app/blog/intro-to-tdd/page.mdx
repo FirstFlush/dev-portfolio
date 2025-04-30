@@ -1,0 +1,210 @@
+import { ArticleLayout } from '@/components/blog/article-layout'
+import tddImage from './tdd.webp'
+
+export const article = {
+  author: 'Michael Pearce',
+  date: '2025-04-30',
+  title: 'Intro to Test Driven Development (TDD)',
+  description:
+    'How I used Test Driven Development to build a smarter message parser for Street Ninja—and why you don’t need to go all-in to get the benefits.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+# What is TDD?
+
+**Test Driven Development (TDD)** flips the usual workflow.  
+Instead of building a feature and testing it later, you start by writing the test *first*. 
+
+Why?
+
+Because writing the test first forces you to define what “done” actually looks like.
+It makes you clarify the goal before you start hacking toward a solution.
+Instead of wandering your way into something that feels right, you're anchoring yourself to a concrete definition of success.
+
+<Image src={tddImage} alt="TDD flow chart" />
+
+### The process:
+
+1. Write a failing test that defines what success looks like.
+2. Write just enough code to pass that test.
+3. Refactor if needed. Repeat.
+
+TDD is especially powerful when:
+- You know exactly what “correct” output should look like.
+- You’re *not* sure how to build the system to get there.
+- You want to avoid writing messy, untested logic.
+
+## Who Invented It?
+
+TDD comes from **Extreme Programming (XP)**, a development methodology from the late ’90s.  
+It was popularized by **Kent Beck**, who also created JUnit.
+
+The core idea wasn’t just about writing clean code.  
+It was about:
+- Getting fast feedback
+- Reducing bugs
+- Building confidence when refactoring or expanding your codebase
+
+## Why I Actually Used It (And Why I’m Sold)
+
+I used TDD in **Street Ninja**, a nonprofit project that helps homeless people in Vancouver find food, shelter, and hygiene services via SMS.
+
+### The Challenge
+
+I needed to build a **message parser** for Street Ninja that could understand natural-language SMS messages like:
+
+- `food 950 e broadway`
+- `950 broadway st i need food`
+- `950 broadway e food`
+- `i need some food and i am near main st at 950 broadway plz help`
+- `looking for a meal im 950 broadway st e thank you`
+- `need food at broadway 950 east`
+
+All of those messages are asking for the same thing:  
+**food at 950 Broadway St E**.
+
+A human gets that instantly.  
+But a computer? Not so much.
+
+People text in unpredictable ways—partial addresses, weird phrasing, typos, unit numbers, hashtags, polite filler, rambling, etc.  
+It’s not structured input, but the intent is clear.
+
+So how do you build a parser that can reliably extract:
+1. The resource being requested (e.g. food, shelter)
+2. The location (address or intersection)
+3. Optional filters (e.g. wheelchair accessible, takeout)
+
+And more importantly—how do you build that parser **with confidence** that it’s doing the right thing?
+
+This is where TDD becomes a game-changer.
+
+Instead of coding blindly and *hoping* it works, I started with the test cases. Using Python and pytest, I defined my test data's shape:
+
+```python
+@dataclass
+class InquirySample:
+    message: str
+    location: ResolvedLocation
+    keyword_and_language: ResolvedKeywordAndLanguage
+    params: Optional[ParamDict] = field(default_factory=ParamDict)
+
+@dataclass
+class ResolvedLocation:
+    location: str
+    location_type: LocationType
+
+@dataclass
+class ResolvedKeywordAndLanguage:
+    sms_keyword_enum: SMSKeywordEnum
+    language_enum: LanguageEnum
+
+@dataclass
+class ParamDict:
+    params: dict[ParamKeyEnum, ParamValueEnum] = field(default={})
+```
+
+Then I created a bunch of test cases.
+That might sound like a pain—and sometimes it is—but tools like ChatGPT make it easy to generate dozens (or even hundreds) of examples that fit your data structure.
+
+That said: **don’t blindly copy and paste**.
+You absolutely need to review each one to make sure it’s accurate before using it in your tests.
+
+Seriously—don’t skip that step.
+Bad test data leads to bad assumptions, and then you’re just validating the wrong behavior with confidence.
+
+My test data was defined as follows:
+
+```python
+FOOD_TEST_DATA = [
+    InquirySample(
+        message="420 Main St hungry",
+        keyword_and_language=ResolvedKeywordAndLanguage(SMSKeywordEnum.FOOD, LanguageEnum.ENGLISH),
+        location=ResolvedLocation("420 Main St", LocationType.ADDRESS),
+    ),
+    InquirySample(
+        message="#3-224 E 10th Ave breakfast",
+        keyword_and_language=ResolvedKeywordAndLanguage(SMSKeywordEnum.FOOD, LanguageEnum.ENGLISH),
+        location=ResolvedLocation("224 E 10th Ave", LocationType.ADDRESS),
+    ),
+    InquirySample(
+        message="any food near #212-104 W Cordova?",
+        keyword_and_language=ResolvedKeywordAndLanguage(SMSKeywordEnum.FOOD, LanguageEnum.ENGLISH),
+        location=ResolvedLocation("104 W Cordova", LocationType.ADDRESS),
+    ),
+    InquirySample(
+        message="hungry at main and hastings",
+        keyword_and_language=ResolvedKeywordAndLanguage(SMSKeywordEnum.FOOD, LanguageEnum.ENGLISH),
+        location=ResolvedLocation("main and hastings", LocationType.INTERSECTION),
+    ),
+    InquirySample(
+        message="wheelchair accessible food 450 Powell St",
+        keyword_and_language=ResolvedKeywordAndLanguage(SMSKeywordEnum.FOOD, LanguageEnum.ENGLISH),
+        location=ResolvedLocation("450 Powell St", LocationType.ADDRESS),
+        params=ParamDict({
+            FoodParamKey.WHEELCHAIR: BooleanParamValue.TRUE
+        }),
+    ),
+    InquirySample(
+        message="takeout meals near 789 Broadway",
+        keyword_and_language=ResolvedKeywordAndLanguage(SMSKeywordEnum.FOOD, LanguageEnum.ENGLISH),
+        location=ResolvedLocation("789 Broadway", LocationType.ADDRESS),
+        params=ParamDict({
+            FoodParamKey.TAKEOUT: BooleanParamValue.TRUE,
+            FoodParamKey.MEALS: BooleanParamValue.TRUE
+        }),
+    ),
+    # etc.............
+]
+```
+
+Each test defines what the correct result should be.
+The structure is simple and human-readable—but precise enough to validate parsing logic programmatically.
+
+This is the core of why TDD worked so well for this:
+> I didn’t know exactly how to build the logic…
+> But I did know what correct output looked like.
+
+So I wrote out a bunch of these test cases.  
+Ran them.  
+Watched them all fail (as expected).  
+Then I got to work, building the parsing system piece by piece, shaping it around the test cases like a mold.
+
+Every time a new test passed, I knew the system was getting smarter.  
+Every time I refactored, the tests gave me instant feedback if I broke something.
+
+TDD didn’t just help me build the right system—  
+It helped me build it with confidence.
+
+### The result?
+
+- The location parser got much more accurate
+- Refactoring was stress-free
+- I could confidently expand logic without breaking stuff
+
+TDD *literally* guided me toward the right implementation, despite me having no idea how to get there.
+
+## You Don’t Have to Go All-In
+
+TDD isn’t some sacred vow you have to take throughout your entire project.
+You don’t need to write *every* part of your app this way. There's going to be certain areas where it shines and there's going to be other areas where it slows you down.
+
+Here’s the real takeaway:
+
+> If you find yourself in a spot where defining **correct behavior** is easier than figuring out the logic to get there…  
+> TDD might be a good option for you.
+
+Just use it where it makes sense.  
+You don’t need to be a “TDD dev.”  
+You just need to know when it can help.
+
+Sometimes, clarity starts with a bunch of failing tests.
+
+---
+
+*Thanks for reading. If you're curious how I built the Street Ninja parser or want to dig into the code, [check out the GitHub repo](https://github.com/FirstFlush/street_ninja).*  

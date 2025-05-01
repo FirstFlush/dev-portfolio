@@ -38,7 +38,7 @@
 @layer components {
 
   ::selection {
-    @apply bg-teal-400/30 text-white;
+    @apply bg-teal-400/60 text-white;
   }
 
   .link {

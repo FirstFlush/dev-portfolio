@@ -18,7 +18,8 @@ import {
   PypiOriginal,
   ViteOriginal,
   FastifyOriginal,
-  SvelteOriginal
+  SvelteOriginal,
+  GoOriginalWordmark,
 } from 'devicons-react'
 import React from 'react';
 import { Link } from 'lucide-react';
@@ -76,6 +77,12 @@ export const projects: Project[] = [
     description: "An API built with TypeScript and Fastify that makes the user-agents Node.js package accessible from the browser. Lightweight, fast, filterable, and with thousands of fresh user agents always up-to-date. Frontend built with Svelte and TailwindCSS. Containerized with Docker.",
     links: [{ href: "https://github.com/firstflush/useragent-one", label: "github.com", icon:  Link }],
     logos: [TypescriptOriginal, FastifyOriginal, SvelteOriginal, TailwindcssOriginal, DockerOriginal]
+  },
+  {
+    name: "sninja",
+    description: "A Go-based CLI tool for managing the Street Ninja production server. It wraps common operations like viewing Docker logs, accessing the Django shell, and deploying updates. Sninja simplifies server management into one unified command-line interface.",
+    links: [{ href: "https://github.com/firstflush/sninja", label: "github.com", icon:  Link }],
+    logos: [GoOriginalWordmark]
   },
   {
     name: "PowerSweep",

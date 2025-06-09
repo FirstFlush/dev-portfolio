@@ -39,8 +39,6 @@ interface Project {
   }>[]
 }
 
-
-
 export const projects: Project[] = [
   {
     name: "Street Ninja",

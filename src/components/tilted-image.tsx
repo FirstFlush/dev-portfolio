@@ -14,7 +14,7 @@ const TiltedImage = ({
             alt={alt}
             sizes={sizes}
             className={clsx(
-                "aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800",
+                "aspect-square rotate-4 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800",
                 className
             )}
             {...props}

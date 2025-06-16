@@ -20,6 +20,8 @@ import {
   FastifyOriginal,
   SvelteOriginal,
   GoOriginalWordmark,
+  NestjsOriginal,
+  PrismaOriginal,
 } from 'devicons-react'
 import React from 'react';
 import { Link } from 'lucide-react';
@@ -40,6 +42,20 @@ interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    name: "Streetlight-API",
+    description:
+      "An API that aggregates data on services for the homeless from disparate sources—APIs, websites, PDFs—into a single, structured format. Built with NestJS, Prisma, Playwright, and Axios, it serves as the public-facing layer for real-time scraping, orchestration, and data delivery.",
+    links: [{ href: "https://github.com/firstflush/streetlight-api", label: "github.com", icon: Link }],
+    logos: [TypescriptOriginal, NestjsOriginal, PrismaOriginal, PlaywrightOriginal, DockerOriginal],
+  },
+  {
+    name: "Ninja Crawl",
+    description:
+      "A modular Python scraping engine designed to extract, clean, and normalize raw data—HTML, JSON, or PDF—without context of source or destination. It decouples scraping from delivery, powering Streetlight-API and future projects. Built with FastAPI, BeautifulSoup, and PdfPlumber, along with other parsing tools.",
+    links: [{ href: "https://github.com/firstflush/ninja_crawl", label: "github.com", icon: Link }],
+    logos: [PythonOriginal, FastapiOriginal, DockerOriginal],
+  },
   {
     name: "Street Ninja",
     description:

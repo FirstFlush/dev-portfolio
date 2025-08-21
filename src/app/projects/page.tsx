@@ -2,12 +2,11 @@ import { type Metadata } from 'next'
 import { projects } from './projects'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/simple-layout'
-import { LinkIcon } from '@/components/icons/icons'
 import clsx from 'clsx'
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'A mix of open-source, personal, and experimental projects—each one pushing my skills further.',
+  description: 'A mix of open-source, professional, personal, and experimental projects. Each one pushing my skills further.',
 }
 
 export default function Projects() {
@@ -18,38 +17,41 @@ export default function Projects() {
     >
       <ul
         role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
       >
         {projects.map((project) => (
-          <Card as="li" key={project.name}>
+          <Card as="li" key={project.name} className={clsx(
+            "dark:bg-zinc-800/50 bg-zinc-100/75",
+            "sm:hover:dark:bg-zinc-800/50 sm:dark:bg-inherit sm:hover:bg-zinc-100/75 sm:bg-inherit",
+            "px-4 py-8 transition rounded-xl sm:rounded-2xl",
+          )}>
             <div className='z-10 flex gap-x-3 items-center'>
               {project.logos.map((Logo, i) => (
-                <Logo size={50} key={i} />
+                <Logo size={45} key={i} />
               ))}
               
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link target="_blank" rel="noopener noreferrer" href={project.links[0].href}>{project.name}</Card.Link>
+              <div>{project.name}</div>
             </h2>
             <Card.Description>{project.description}</Card.Description>
-            <p className={clsx(
+            <div className={clsx(
               "relative z-10 mt-6 flex text-sm font-medium",
-              " transition group-hover:text-teal-500 ",
               "sm:text-zinc-400 sm:dark:text-zinc-200",
               "text-teal-500",
             )}>
 
-            <div className="ml-2">
+            <div className="ml-2 z-100">
               {project.links.map((link) => (
-                <div key={link.href} className="flex items-center gap-2">
+                <a href={link.href} target="_blank" rel="noopener noreferrer" key={link.href} className="cursor-pointer flex items-center gap-2 transition dark:hover:text-teal-500 hover:text-teal-700 hover:font-semibold dark:hover:font-normal">
                   <link.icon size={14}/>
                   <div>{link.label}</div>
-                </div>
+                </a>
               ))}
 
             </div>
 
-            </p>
+            </div>
           </Card>
         ))}
       </ul>

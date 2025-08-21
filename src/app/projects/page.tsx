@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <SimpleLayout
       title="Projects I’ve Built"
-      intro="A mix of open-source, personal, and experimental projects—each one pushing my skills further."
+      intro="A mix of open-source, professional, personal, and experimental projects. Each one pushing my skills further."
     >
       <ul
         role="list"

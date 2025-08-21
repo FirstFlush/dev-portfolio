@@ -22,6 +22,7 @@ import {
   GoOriginalWordmark,
   NestjsOriginal,
   PrismaOriginal,
+  JsonOriginal,
 } from 'devicons-react'
 import React from 'react';
 import { Link } from 'lucide-react';
@@ -43,11 +44,39 @@ interface Project {
 
 export const projects: Project[] = [
   {
+    name: "typed-api-response",
+    description: "A PyPI package providing best-in-class API response wrapping with built-in type inference for Python. Simplifies API response handling with automatic type detection and validation, improving developer experience and code reliability. Published and maintained on PyPI with active community adoption.",
+    links: [
+      { href: "https://github.com/firstflush/typed-api-response", label: "github.com", icon: Link },
+      { href: "https://pypi.org/project/typed-api-response/", label: "pypi.org", icon: Link }
+    ],
+    logos: [PythonOriginal, PypiOriginal],
+  },
+  {
+    name: "Ninja Gate",
+    description:
+      "A protective microservice that acts as a web application firewall for Street Ninja's SMS infrastructure. Implements intelligent rules and caching to detect malicious or wasteful message patterns while balancing threat detection with compassion for users experiencing mental health challenges. Reduces SMS costs while maintaining service accessibility.",
+    links: [{ href: "https://github.com/firstflush/ninja_gate", label: "github.com", icon: Link }],
+    logos: [PythonOriginal, DjangoPlain, RedisOriginal],
+  },
+  {
+    name: "Ninja Brain",
+    description: "An AI-powered microservice that enhances Street Ninja's SMS processing through ML/NLP/NER capabilities. Uses spaCy models to intelligently parse and route incoming messages, improving response accuracy and user experience. Built with Python, spaCy, and FastAPI for seamless integration with the Street Ninja ecosystem.",
+    links: [{ href: "https://github.com/firstflush/ninja_brain", label: "github.com", icon: Link }],
+    logos: [PythonOriginal, DjangoPlain],
+  },
+  {
     name: "Streetlight-API",
     description:
       "An API that aggregates data on services for the homeless from disparate sources—APIs, websites, PDFs—into a single, structured format. Built with NestJS, Prisma, Playwright, and Axios, it serves as the public-facing layer for real-time scraping, orchestration, and data delivery.",
     links: [{ href: "https://github.com/firstflush/streetlight-api", label: "github.com", icon: Link }],
     logos: [TypescriptOriginal, NestjsOriginal, PrismaOriginal, PlaywrightOriginal, DockerOriginal],
+  },
+  {
+    name: "Ninja Tag",
+    description: "CLI-based NER ML training pipeline that streamlines the process of converting annotated data from Label Studio into .spacy training files. Automates dataset splitting for train/validation/test phases and powers the NER model used in Ninja Brain.",
+    links: [{ href: "https://github.com/firstflush/street_ninja_ner", label: "github.com", icon: Link }],
+    logos: [PythonOriginal, JsonOriginal],
   },
   {
     name: "Ninja Crawl",
@@ -69,7 +98,7 @@ export const projects: Project[] = [
       'The official website for the Street Ninja project. It serves as an informational hub for government officials, grant issuers, fundraisers, and NGOs to learn about the initiative. The site features an interactive map and a web-based chat that allows users to simulate the normally SMS-based service in their browser.',
     links: [
       { href: 'https://github.com/firstflush/website_street_ninja', label: 'github.com', icon:  Link },
-      // { href: 'https://streetninja.ca', label: 'streetninja.ca', icon:  Link }
+      { href: 'https://streetninja.ca', label: 'streetninja.ca', icon:  Link }
     ],
     logos: [TypescriptOriginal, ReactOriginal, TailwindcssOriginal],
   },
@@ -77,7 +106,10 @@ export const projects: Project[] = [
     name: "Stegosaurus",
     description:
       "A C# steganography tool that allows users to hide and extract encrypted messages within images using LSB encoding and AES encryption. Includes a CI pipeline with automated testing, and published on NuGet.",
-    links: [{ href: "https://github.com/firstflush/Stegosaurus", label: "github.com", icon:  Link }],
+    links: [
+      { href: "https://github.com/firstflush/Stegosaurus", label: "github.com", icon:  Link },
+      { href: "https://www.nuget.org/packages/Stegosaurus/", label: "nuget.org", icon:  Link },
+    ],
     logos: [CsharpOriginal, NugetOriginal],
   },
   {
@@ -89,7 +121,10 @@ export const projects: Project[] = [
   {
     name: "UserAgent.One",
     description: "An API built with TypeScript and Fastify that makes the user-agents Node.js package accessible from the browser. Lightweight, fast, filterable, and with thousands of fresh user agents always up-to-date. Frontend built with Svelte and TailwindCSS. Containerized with Docker.",
-    links: [{ href: "https://github.com/firstflush/useragent-one", label: "github.com", icon:  Link }],
+    links: [
+      { href: "https://github.com/firstflush/useragent-one", label: "github.com", icon:  Link },
+      { href: "https://useragent.one", label: "useragent.one", icon:  Link },
+    ],
     logos: [TypescriptOriginal, FastifyOriginal, SvelteOriginal, TailwindcssOriginal, DockerOriginal]
   },
   {
@@ -116,14 +151,20 @@ export const projects: Project[] = [
     name: "tire_codes",
     description:
       "A Python package for parsing and decoding automotive tire codes, providing detailed specifications such as tire width, aspect ratio, load index, and speed rating. Pubished on PyPI.",
-    links: [{ href: "https://github.com/firstflush/tire_codes", label: "github.com", icon:  Link }],
+    links: [
+      { href: "https://github.com/firstflush/tire_codes", label: "github.com", icon:  Link },
+      { href: "https://pypi.org/project/tire-codes", label: "pypi.org", icon:  Link }
+    ],
     logos: [PythonOriginal, PypiOriginal],
   },
   {
     name: "canatax",
     description:
       "A Python tool for quickly calculating Canadian income tax and sales tax rates across provinces, useful for personal finance and business applications. Published on PyPI.",
-    links: [{ href: "https://github.com/firstflush/canatax", label: "github.com", icon:  Link }],
+    links: [
+      { href: "https://github.com/firstflush/canatax", label: "github.com", icon:  Link },
+      { href: "https://pypi.org/project/canatax", label: "pypi.org", icon:  Link },
+    ],
     logos: [PythonOriginal, PypiOriginal],
   },
   {
